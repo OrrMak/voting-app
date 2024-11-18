@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 async function updateAllUsers() {
-    const baseURL = 'https://your-mockapi-url.com/users'; // Replace with your actual MockAPI endpoint.
+    const baseURL = 'https://673894694eb22e24fca858dd.mockapi.io/api/UsersVotingInfo'; //
 
     for (let i = 1; i <= 15; i++) {
         const updatedData = {
-            email: `fakeemail${i}@example.com`,
-            password: `fakepassword${i}`,
+            email: `fake${i}${i}email${i}@projects.com`,
+            password: `${i}${i}fake${i}${i}password${i}`,
         };
 
         try {
