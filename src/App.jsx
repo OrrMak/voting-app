@@ -10,7 +10,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage/>}/>
         <Route path="/voting" element={<VotingPage/>}/>
-        {/* <Route path="/" element={<AdminPage/>}/> */}
       </Routes>
     </Router>
   )
