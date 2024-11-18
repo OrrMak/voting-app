@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { fetchUsers } from './../services/api';
+import './LoginPage.css';
 
 function LoginPage() {
  
@@ -13,9 +14,11 @@ function LoginPage() {
   const [email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const [loginError, setLoginError]=useState('');
+  // const [loading, setLoading] = useState(false);
 
   const handleLogin =  async (eventObject) =>{
     eventObject.preventDefault();   // Prevent the form from refreshing the page
+    // setLoading(true);
     try{
         const response=await fetchUsers();
         const users= response.data; //The term data refers to the body of the response returned by the server. ( specific to the Axios library )
@@ -32,33 +35,36 @@ function LoginPage() {
       console.error('Error fetching users: ',error);
       setLoginError('Something went wrong. Please try again later.');
     }
+    // finally{
+    //   setLoading(false);
+    // }
   };
 
   return (
     <div>
       <h1>SIGN IN</h1>
       <form onSubmit={handleLogin}>
-        <section id='email'>
-        <label htmlFor="userEmail"> Email: </label>
+        {/* <section id='email'> */}
+        <label htmlFor="userEmail"> Email </label>
         <input 
           type="email"
           value={email}
           onChange={(userMail)=> setEmail(userMail.target.value)}
           required
         />
-        </section>
-        <section id='password'>
-          <label htmlFor="userPassword"> Password: </label>
+        {/* </section> */}
+        {/* <section id='password'> */}
+          <label htmlFor="userPassword"> Password </label>
           <input 
             type="password"
             value={password}
             onChange={(userPassword)=>setPassword(userPassword.target.value)}
             required
           />
-        </section>
+        {/* </section> */}
               {/*render the error if loginError is not an empty string */}
         {loginError && <p style={{color:'red'}}>{loginError}</p>}
-        <button type='submit'>Login</button>
+        <div id='loginButton'><button type='submit'>Login</button></div>
       </form>
     </div>
   )
